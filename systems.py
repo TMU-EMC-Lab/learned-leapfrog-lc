@@ -930,7 +930,7 @@ class ChargeFluxLossyLine(ChargeFluxLine):
 class VaractorLine(ChargeFluxLine):
     """バラクタ（逆バイアスの接合容量）と線形のインダクタを環状に並べた線路（2026-10-22，ELEX：物理の単位の例）.
 
-    物理の値：接合容量 C_j0 = 1 pF，内蔵電位 φ_bi = 0.7 V，指数 m = 0.5（階段接合），逆バイアス V_b = 2 V で C_b = C_j0/√(1 + V_b/φ_bi)
+    物理の値：接合容量 C_j0 = 1 pF，内蔵電位 φ_bi = 0.7 V，指数 m = 0.5，逆バイアス V_b = 2 V で C_b = C_j0/√(1 + V_b/φ_bi)
     = 0.509 pF，インダクタ L = 1.27 nH（Z0 = √(L/C_b) = 50 Ω）。単位：電圧 1 V，電荷 C_b·1 V，時間 t0 = √(L C_b) = 25.4 ps，電流 1 V/Z0 = 20 mA。
     バイアス点からの電荷 q と電圧 u の関係は，m = 0.5 の接合の式 Q(V) = 2 C_j0 φ_bi (√(1 + V/φ_bi) − 1) を逆に解いて
     u(q) = q + α q²，α = (C_b/C_j0)² (1 V)/(4 φ_bi) = 0.0925。インダクタは線形で i(φ) = φ。

@@ -118,7 +118,7 @@ TEXT_SOURCES = {
                      "shift over block crossings 1, 3, 5, 7, 9| in ns (pulse_physics/*.json)",
 }
 
-# Driven varactor line (Sect. 3.2): abrupt-junction varactors and linear inductors, in units of 1 V and C_b * 1 V
+# Driven varactor line (Sect. 3.2): varactors, C(V) = C_j0/sqrt(1 + V/V_bi), and linear inductors, in units of 1 V and C_b * 1 V
 CJ0, PHI_BI, V_BIAS, L_IND = 1e-12, 0.7, 2.0, 1.27e-9
 ALPHA = 0.0925  # the coefficient of u(q) = q + ALPHA q^2 in scripts/nltlv_open_20261022.py
 DT = 0.05

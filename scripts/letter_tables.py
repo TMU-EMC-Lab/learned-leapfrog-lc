@@ -155,14 +155,14 @@ def print_tests(res: dict):
 FIG3 = [
     ("Cubic circuit", 0, "circuit", "C4"), ("Cubic circuit", 0, "circuit", "C5"),
     ("Line (N=8)", 0, "line", "L4"), ("Line (N=8)", 0, "line", "L5"), ("Line (N=32)", 0, "line", "L7"),
-    ("Leaky ring", 0, "leaky", "G2"), ("Leaky ring", 0, "leaky", "G3"),
+    ("Lossy ring", 0, "leaky", "G2"), ("Lossy ring", 0, "leaky", "G3"),
     ("Embedded ring, energy", 0, "embedded", "E1"), ("Embedded ring, energy", 0, "embedded", "E2"),
     ("Cubic circuit", 1, "circuit", "C1"), ("Cubic circuit, 2nd set", 1, "second-set", "R1"),
     ("Cubic circuit, 2nd set", 1, "second-set", "R2"), ("Circuit, rollout loss", 1, "training", "T3-M-circuit"),
     ("Circuit, 0.1% noise", 1, "input-noise", "N2-SIEM-circuit"), ("Line (N=8)", 1, "line", "L1"),
     ("Line (N=8), 2nd set", 1, "second-set", "R3"), ("Line (N=8), 2nd set", 1, "second-set", "R4"),
     ("Line, rollout loss", 1, "training", "T3-M-line"), ("Line, 0.1% noise", 1, "input-noise", "N2-SIEM-line"),
-    ("Leaky ring", 1, "leaky", "G4"), ("Embedded ring, energy", 1, "embedded", "E3"),
+    ("Lossy ring", 1, "leaky", "G4"), ("Embedded ring, energy", 1, "embedded", "E3"),
 ]
 
 

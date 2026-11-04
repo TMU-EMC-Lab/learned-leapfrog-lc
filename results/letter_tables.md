@@ -180,8 +180,8 @@ Ratios to LF in load voltage (charge on the training ring). †: both Holm-adjus
 | one-network baselines | Line (N=8) | Res/LF | 3.81 | [3.46, 4.19] | † | line / L4 |
 | one-network baselines | Line (N=8) | RK4-net/LF | 2.14 | [1.97, 2.33] | † | line / L5 |
 | one-network baselines | Line (N=32) | Res/LF | 1.96 | [1.7, 2.24] | † | line / L7 |
-| one-network baselines | Leaky ring | Res/LF | 2.66 | [2.08, 3.38] | † | leaky / G2 |
-| one-network baselines | Leaky ring | RK4-net/LF | 1.37 | [1.12, 1.69] | † | leaky / G3 |
+| one-network baselines | Lossy ring | Res/LF | 2.66 | [2.08, 3.38] | † | leaky / G2 |
+| one-network baselines | Lossy ring | RK4-net/LF | 1.37 | [1.12, 1.69] | † | leaky / G3 |
 | one-network baselines | Embedded ring, energy | Res/LF | 13.4 | [10.9, 16.4] | † | embedded / E1 |
 | one-network baselines | Embedded ring, energy | RK4-net/LF | 3.87 | [3.28, 4.51] | † | embedded / E2 |
 | off-center ablations | Cubic circuit | SIE-M/LF | 3.76 | [3.16, 4.46] | † | circuit / C1 |
@@ -194,5 +194,5 @@ Ratios to LF in load voltage (charge on the training ring). †: both Holm-adjus
 | off-center ablations | Line (N=8), 2nd set | LF-U/LF | 3.9 | [3.53, 4.3] | † | second-set / R4 |
 | off-center ablations | Line, rollout loss | SIE-M/LF | 2.57 | [2.43, 2.75] | † | training / T3-M-line |
 | off-center ablations | Line, 0.1% noise | SIE-M/LF | 3.27 | [2.72, 4.18] | † | input-noise / N2-SIEM-line |
-| off-center ablations | Leaky ring | SIE-M/LF | 2.13 | [1.71, 2.61] | † | leaky / G4 |
+| off-center ablations | Lossy ring | SIE-M/LF | 2.13 | [1.71, 2.61] | † | leaky / G4 |
 | off-center ablations | Embedded ring, energy | SIE-M/LF | 12.4 | [10.5, 15.1] | † | embedded / E3 |
