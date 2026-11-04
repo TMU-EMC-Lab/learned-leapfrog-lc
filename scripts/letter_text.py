@@ -21,7 +21,7 @@ also holds
   embedded_charge/*.json   hybrid_line_20261021.py --block 8 --steps 10000 --models M --seeds 0 4 (and 5 9), M one of
                            LF, Res, RK4, SIE-M, and LF-Sep: the total charge and flux of the embedded ring (those of
                            LF-KCL are in embedded/)
-  drives/<drive>_rc_M.json nltlv_diag_20261023f_restfix.py --rest-correct with the options of each row of Table V:
+  drives/<drive>_rc_M.json nltlv_diag_20261023f_restfix.py --rest-correct with the options of each drive in README.md:
                            reflect_rc, cw_rc, open_new_rc, reflect_new_rc, train_new_rc, cw_new_rc, open_third_rc,
                            reflect_third_rc, and train_third_rc, besides open_rc, train_rc, and prbs_rc
   drives/<mode>_M.json     nltlv_diag_20261022.py --mode <mode>, with <mode> busy, busy_low, or burst
@@ -600,24 +600,27 @@ def pooled(R: Runs, sources, seeds, a: str, name: str):
 def sect43(R: Runs, V: dict, p) -> None:
     p("## Sect. 4.3 (and README.md)\n")
     meds = []
+    table_v = ("pulses", "reflected", "trains", "bits", "sinusoids", "sinusoids-2")
     for _, seeds, sources in DRIVE_ROWS:
         meds += [(s, median(R.get(s, seeds), "LF")) for s in sources]
     p("- LF's median load-voltage error (% of the amplitude): " + ", ".join(f"{s} {100 * v:.4g}" for s, v in meds)
-      + f"; range {100 * min(v for _, v in meds):.3g}-{100 * max(v for _, v in meds):.3g}")
+      + f"; range {100 * min(v for _, v in meds):.3g}-{100 * max(v for _, v in meds):.3g}, without the 3rd set "
+        f"{100 * min(v for s, v in meds if not s.endswith('-3')):.3g}-{100 * max(v for s, v in meds if not s.endswith('-3')):.3g}, "
+        f"in the rows of Table V {100 * min(v for s, v in meds if s in table_v):.3g}-{100 * max(v for s, v in meds if s in table_v):.3g}")
     dv = V["diverged_drive_runs"]
     p(f"- Runs with diverged signals in the {dv['files']} files of the driven line: "
       + ("; ".join(f"{f} {m} {lr} seed {s}: {n} of {k}" for f, m, lr, s, n, k in dv["runs"]) or "none"))
     e = [(s, m, est(R.get(f"{s}-energy"), m, "LF", f"text/energy/{s}/{m}"))
          for s in ("pulses", "reflected", "trains", "bits", "sinusoids") for m in ("Res", "RK4-net")]
-    p("- Block energy, first set: " + "; ".join(f"{s} {m}/LF {r['ratio']:.4g}" for s, m, r in e)
+    p("- Block energy, first set (README.md): " + "; ".join(f"{s} {m}/LF {r['ratio']:.4g}" for s, m, r in e)
       + f"; range {span(r['ratio'] for _, _, r in e)}")
     k = [("ring", "charge"), *[(s, "load") for s in ("pulses", "reflected", "trains", "bits", "sinusoids")],
          *[(f"{s}-energy", "energy") for s in ("pulses", "reflected", "trains", "bits", "sinusoids")]]
     ks = [(s, w, est(R.get(s), "LF-KCL", "LF", f"text/kcl/{s}")) for s, w in k]
     p("- LF-KCL/LF: " + "; ".join(f"{s} {r['ratio']:.3g}" for s, _, r in ks if r)
-      + f"; driven line {span(r['ratio'] for s, _, r in ks if r and s != 'ring')}, with the ring "
-        f"{span(r['ratio'] for _, _, r in ks if r)}")
-    p("- Uniform-state increments subtracted (each row as in Table V; load voltage, then block energy):")
+      + f"; load voltage and the ring {span(r['ratio'] for _, w, r in ks if r and w != 'energy')}, block energy "
+        f"{span(r['ratio'] for _, w, r in ks if r and w == 'energy')}")
+    p("- Uniform-state increments subtracted (README.md; each drive as in README.md; load voltage, then block energy):")
     for label, seeds, sources in DRIVE_ROWS:
         cells = []
         for measure, tag in (("load", "rc"), ("energy", "rc-energy")):

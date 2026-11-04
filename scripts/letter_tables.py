@@ -3,7 +3,8 @@
 
   python scripts/letter_tables.py tests [--family NAME ...] [--json OUT.json]   every test of docs/planned_tests.csv
   python scripts/letter_tables.py table4                                         medians of Table IV
-  python scripts/letter_tables.py table5                                         ratios of Table V and their daggers
+  python scripts/letter_tables.py table5                                         Table V, with the block energy and the later pulse
+                                                                                 sets that only this repository gives
   python scripts/letter_tables.py fig3                                           ratios, seed intervals, and daggers of Fig. 3
   python scripts/letter_tables.py all                                            all of the above (results/letter_tables.md)
   python scripts/letter_tables.py export                                         rewrite results/letter_runs.csv and
@@ -185,7 +186,10 @@ def print_fig3(rows: list[dict]):
 
 
 # Table V: rows (label, seeds, cells); a cell is (column, planned test or None, source, model A); B is always LF.
-T4_COLUMNS = ["Load Res", "Load RK4-net", "Load SIE", "Load LF-U", "Energy SIE", "Energy LF-U"]
+# The letter's table has T4_LETTER_COLUMNS and not T4_REPOSITORY_ROWS; the rest is given only in this repository.
+T4_LETTER_COLUMNS = ["Load Res", "Load RK4-net", "Load SIE", "Load LF-U"]
+T4_REPOSITORY_COLUMNS = ["Load SIE", "Load LF-U", "Energy SIE", "Energy LF-U"]
+T4_REPOSITORY_ROWS = ("Pulses, 2nd set", "Pulses, 3rd set")
 T4 = [
     ("Training ring", "0-9", [("Load Res", ("varactor", "V2"), "ring", "Res"), ("Load RK4-net", ("varactor", "V3"), "ring", "RK4-net"),
                               ("Load SIE", ("varactor", "V1"), "ring", "SIE"), ("Load LF-U", None, "ring", "LF-U")]),
@@ -228,7 +232,8 @@ def table5(data: Data) -> list[dict]:
             if test:
                 r = res[test]
                 assert r["model_a"] == a and r["model_b"] == "LF" and r["source"] == source, f"Table V cell {label}/{col} != {test}"
-                row[col] = {"ratio": r["ratio"], "tested": True, "dagger": r["dagger"], "test": "/".join(test)}
+                row[col] = {"ratio": r["ratio"], "tested": True, "dagger": r["dagger"], "test": "/".join(test),
+                            "p": max(r["p_runs_holm"], r["p_seeds_holm"])}
             else:
                 d = log_ratios_for(data, source, a, "LF", LD.seed_range(seeds), ("medium",))
                 D = np.array([v for x in d.values() for v in x.values()])
@@ -237,19 +242,29 @@ def table5(data: Data) -> list[dict]:
     return out
 
 
-def print_table5(rows: list[dict]):
-    print("Ratios to LF. †: significant (both Holm-adjusted p < 0.05); *: planned test, not significant; plain: not tested.")
-    print("| Row | " + " | ".join(T4_COLUMNS) + " |")
-    print("|---|" + "---|" * len(T4_COLUMNS))
+def print_t4_cells(rows: list[dict], columns: list[str]):
+    print("| Row | " + " | ".join(columns) + " |")
+    print("|---|" + "---|" * len(columns))
     for r in rows:
         cells = []
-        for c in T4_COLUMNS:
+        for c in columns:
             x = r.get(c)
             if x is None or x["ratio"] is None:
                 cells.append("--")
+            elif x["tested"]:
+                cells.append(f"{x['ratio']:.3g}" + ("†" if x["dagger"] else "*") + f" ({fmt_p(x['p'])})")
             else:
-                cells.append(f"{x['ratio']:.3g}" + ("†" if x["dagger"] else "*" if x["tested"] else ""))
+                cells.append(f"{x['ratio']:.3g}")
         print(f"| {r['row']} | " + " | ".join(cells) + " |")
+
+
+def print_table5(rows: list[dict]):
+    print("Ratios to LF in load voltage (charge on the training ring). †: both Holm-adjusted p < 0.05; *: planned test without †; "
+          "in parentheses, the larger of the two Holm-adjusted p; plain: not tested; Load Res: Euler-net.")
+    print_t4_cells([r for r in rows if r["row"] not in T4_REPOSITORY_ROWS], T4_LETTER_COLUMNS)
+    print("\n### SIE and LF-U in load voltage and block energy, every drive (the block energy and the rows 'Pulses, 2nd set' and "
+          "'Pulses, 3rd set' are given only in this repository)\n")
+    print_t4_cells([r for r in rows if r["row"] != "Training ring"], T4_REPOSITORY_COLUMNS)
 
 
 T3_MODELS = ["LF", "Res", "RK4-net", "LF-U", "SIE", "SIE-M", "LF-KCL"]

@@ -11,7 +11,7 @@ Computed by `python scripts/letter_text.py` from results/letter_runs.csv, result
   - RK4-net/LF with the chosen rates 4.48 [3.67, 5.53] (20 pairs); with 1e-2 and 3e-2 3.75 [3.02, 4.7] (40 pairs)
   - SIE-M/LF with the chosen rates 4.49 [3.67, 5.51] (20 pairs); with 1e-2 and 3e-2 3.76 [3.18, 4.49] (40 pairs)
 - Free runs at dt = 0.05 with any diverged test initial condition (17 sources, 5060 runs): none
-- Planned tests: 128 in 28 families of 1-12; repository only 43
+- Planned tests: 128 in 28 families of 1-12; repository only 52
 
 - Varactor line: C_b = 0.5092 pF, t0 = 25.43 ps, Z0 = 49.94 Ohm, dt = 1.271 ps; u(q) = q + alpha q^2 with alpha = 1/(4 (phi + V_bias)) = 0.0925926 (0.0925 in the code); dt at 3 V: 0.0603 of the stability limit
 - Matched pulses: 1.004-2.981 V, edges 108.3-302.3 ps, 2.543 ns; median 10-90% rise 122.2 ps incident, 72.47 ps at the all-classical load
@@ -42,11 +42,11 @@ Computed by `python scripts/letter_text.py` from results/letter_runs.csv, result
 
 ## Sect. 4.3 (and README.md)
 
-- LF's median load-voltage error (% of the amplitude): pulses 0.4166, reflected 2.364, trains 0.3863, bits 0.8266, sinusoids 1.413, pulses-2 0.4533, reflected-2 2.868, trains-2 0.4495, pulses-3 0.5913, reflected-3 2.931, trains-3 0.579, sinusoids-2 1.703; range 0.386-2.93
+- LF's median load-voltage error (% of the amplitude): pulses 0.4166, reflected 2.364, trains 0.3863, bits 0.8266, sinusoids 1.413, pulses-2 0.4533, reflected-2 2.868, trains-2 0.4495, pulses-3 0.5913, reflected-3 2.931, trains-3 0.579, sinusoids-2 1.703; range 0.386-2.93, without the 3rd set 0.386-2.87, in the rows of Table V 0.386-2.36
 - Runs with diverged signals in the 109 files of the driven line: busy_low_Res.json Res 3e2 seed 0: 1 of 64; cw_new_SIE.json SIE 3e2 seed 18: 8 of 64; cw_rc_RK4.json RK4 3e2 seed 8: 3 of 64; cw_rc_SIE.json SIE 3e2 seed 5: 3 of 64
-- Block energy, first set: pulses Res/LF 1.773; pulses RK4-net/LF 1.684; reflected Res/LF 1.987; reflected RK4-net/LF 1.952; trains Res/LF 1.854; trains RK4-net/LF 1.79; bits Res/LF 1.461; bits RK4-net/LF 1.464; sinusoids Res/LF 2.384; sinusoids RK4-net/LF 2.647; range 1.46-2.65
-- LF-KCL/LF: ring 0.268; pulses 0.128; reflected 0.0618; trains 0.149; bits 0.0616; sinusoids 0.211; pulses-energy 0.106; reflected-energy 0.0222; trains-energy 0.125; bits-energy 0.028; sinusoids-energy 0.0512; driven line 0.0222-0.211, with the ring 0.0222-0.268
-- Uniform-state increments subtracted (each row as in Table V; load voltage, then block energy):
+- Block energy, first set (README.md): pulses Res/LF 1.773; pulses RK4-net/LF 1.684; reflected Res/LF 1.987; reflected RK4-net/LF 1.952; trains Res/LF 1.854; trains RK4-net/LF 1.79; bits Res/LF 1.461; bits RK4-net/LF 1.464; sinusoids Res/LF 2.384; sinusoids RK4-net/LF 2.647; range 1.46-2.65
+- LF-KCL/LF: ring 0.268; pulses 0.128; reflected 0.0618; trains 0.149; bits 0.0616; sinusoids 0.211; pulses-energy 0.106; reflected-energy 0.0222; trains-energy 0.125; bits-energy 0.028; sinusoids-energy 0.0512; load voltage and the ring 0.0616-0.268, block energy 0.0222-0.125
+- Uniform-state increments subtracted (README.md; each drive as in README.md; load voltage, then block energy):
   - Pulses, matched: load SIE/LF 1.02 [0.866, 1.18] (20 pairs); load LF-U/LF 1.03 [0.877, 1.2] (20 pairs); load Res/LF 1.49 [1.2, 1.87] (20 pairs); load RK4-net/LF 1.83 [1.36, 2.4] (20 pairs); energy SIE/LF 0.95 [0.789, 1.13] (20 pairs); energy LF-U/LF 1 [0.872, 1.16] (20 pairs); energy Res/LF 1.4 [1.11, 1.79] (20 pairs); energy RK4-net/LF 1.59 [1.22, 2.04] (20 pairs)
   - Pulses, reflected: load SIE/LF 0.952 [0.816, 1.12] (20 pairs); load LF-U/LF 0.969 [0.796, 1.19] (20 pairs); energy SIE/LF 0.904 [0.759, 1.09] (20 pairs); energy LF-U/LF 1.05 [0.9, 1.22] (20 pairs)
   - Pulse trains: load SIE/LF 1.02 [0.86, 1.2] (20 pairs); load LF-U/LF 1.01 [0.839, 1.21] (20 pairs); load Res/LF 1.48 [1.22, 1.8] (20 pairs); load RK4-net/LF 1.88 [1.37, 2.5] (20 pairs); energy SIE/LF 0.977 [0.813, 1.15] (20 pairs); energy LF-U/LF 1.02 [0.909, 1.14] (20 pairs); energy Res/LF 1.43 [1.18, 1.75] (20 pairs); energy RK4-net/LF 1.67 [1.24, 2.21] (20 pairs)

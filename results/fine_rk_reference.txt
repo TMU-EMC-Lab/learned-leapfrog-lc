@@ -11,7 +11,7 @@
 - train_new (Pulse trains of the 2nd and 3rd pulse sets (--sig-seed 20261031), 4000 steps): load voltage mean 0.031%, max 0.0965% [0.031%, 0.0965%]; block energy mean 0.00366%, max 0.00917% [0.00366%, 0.00917%]
 - cwrep (Sinusoids, 2nd set (--sig-seed 20261029), 4000 steps): load voltage mean 0.175%, max 0.377% [0.175%, 0.377%]; block energy mean 0.0226%, max 0.0612% [0.0227%, 0.0612%]
 
-Rows of Table V and signal groups: Pulses, matched = open; Pulses, reflected = reflect; Pulse trains = train; Bit streams = prbs; Sinusoids = cw; Pulses, 2nd set = open + reflect + train_new; Pulses, 3rd set = open + reflect + train_new; Sinusoids, 2nd set = cwrep
+Drives of README.md and signal groups: Pulses, matched = open; Pulses, reflected = reflect; Pulse trains = train; Bit streams = prbs; Sinusoids = cw; Pulses, 2nd set = open + reflect + train_new; Pulses, 3rd set = open + reflect + train_new; Sinusoids, 2nd set = cwrep
 
 Mean load-voltage deviation of the classical line / LF's median load-voltage error in each row using the group (results/letter_runs.csv, model LF)
 - open/pulses: 0.0263% / 0.417% (20 runs) = 0.063

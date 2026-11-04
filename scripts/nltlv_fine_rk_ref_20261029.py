@@ -199,7 +199,7 @@ def write_summary(res, path):
                  f" [{s['load']['mean_pct']:.3g}%, {s['load']['max_pct']:.3g}%]; block energy mean {m['energy']['mean_pct']:.3g}%, "
                  f"max {m['energy']['max_pct']:.3g}% [{s['energy']['mean_pct']:.3g}%, {s['energy']['max_pct']:.3g}%]"
                  + (f" ({len(r['amp']) - n_e} empty signals left out, {n_e} used)" if n_e < len(r["amp"]) else ""))
-    L += ["", "Rows of Table V and signal groups: " + "; ".join(f"{k} = {' + '.join(v)}" for k, v in res["table4_rows"].items())]
+    L += ["", "Drives of README.md and signal groups: " + "; ".join(f"{k} = {' + '.join(v)}" for k, v in res["table4_rows"].items())]
     if "lf_ratio" in res:
         L += ["", "Mean load-voltage deviation of the classical line / LF's median load-voltage error in each row using the group "
               "(results/letter_runs.csv, model LF)"]

@@ -41,20 +41,20 @@ centered-update,K5,Table VI,V-I circuit with only C(V) nonlinear,rollout error,R
 centered-update,K6,Table VI,"V-I circuit with C(V) and L(I) nonlinear, energies up to 0.5",rollout error,Res2,LF-C,0-9,small medium,A/B > 1,vi-both
 centered-update,K7,Table VI,V-I circuit with only L(I) nonlinear,rollout error,Res2,LF-C,0-9,small medium,A/B > 1,vi-ind
 centered-update,K8,Table VI,"V-I circuit with C(V) and L(I) nonlinear, energies up to 1",rollout error,Res2,LF-C,0-9,small medium,A/B > 1,vi-both-e1
-embedded,E1,Fig. 3; Sect. 4.2,32-section classical ring with an eight-section learned block,energy change over 10^4 steps,Res,LF,0-9,small medium,A/B > 1,embedded
-embedded,E2,Fig. 3; Sect. 4.2,32-section classical ring with an eight-section learned block,energy change over 10^4 steps,RK4-net,LF,0-9,small medium,A/B > 1,embedded
-embedded,E3,Fig. 3; Sect. 4.2,32-section classical ring with an eight-section learned block,energy change over 10^4 steps,SIE-M,LF,0-9,small medium,A/B > 1,embedded
+embedded,E1,Fig. 3; Sect. 4.2,32-section conventional ring with an eight-section learned block,energy change over 10^4 steps,Res,LF,0-9,small medium,A/B > 1,embedded
+embedded,E2,Fig. 3; Sect. 4.2,32-section conventional ring with an eight-section learned block,energy change over 10^4 steps,RK4-net,LF,0-9,small medium,A/B > 1,embedded
+embedded,E3,Fig. 3; Sect. 4.2,32-section conventional ring with an eight-section learned block,energy change over 10^4 steps,SIE-M,LF,0-9,small medium,A/B > 1,embedded
 leaky,G1,Sect. 4.1,eight-section leaky ring,rollout error,LF-Sep,LF,0-9,small medium,A/B > 1,leaky
 leaky,G2,Fig. 3; Sect. 4.1,eight-section leaky ring,rollout error,Res,LF,0-9,small medium,A/B > 1,leaky
 leaky,G3,Fig. 3; Sect. 4.1,eight-section leaky ring,rollout error,RK4-net,LF,0-9,small medium,A/B > 1,leaky
 leaky,G4,Fig. 3,eight-section leaky ring,rollout error,SIE-M,LF,0-9,small medium,A/B > 1,leaky
 leaky,G5,repository only,32-section leaky ring (networks trained on 8),rollout error,Res,LF,0-9,small medium,A/B > 1,leaky-32
-leaky,G6,repository only,32-section classical leaky ring with an eight-section learned block,deviation from the classical solution over 1000 steps,Res,LF,0-9,small medium,A/B > 1,leaky-embedded
+leaky,G6,repository only,32-section conventional leaky ring with an eight-section learned block,deviation from the conventional solution over 1000 steps,Res,LF,0-9,small medium,A/B > 1,leaky-embedded
 leaky-structured,S1,repository only,eight-section leaky ring,rollout error,LF,LF-SepD,0-9,small medium,A/B > 1,leaky
 leaky-structured,S2,repository only,eight-section leaky ring,rollout error,Res,LF-SepD,0-9,small medium,A/B > 1,leaky
 leaky-structured,S3,repository only,eight-section leaky ring,rollout error,RK4-net,LF-SepD,0-9,small medium,A/B > 1,leaky
 leaky-structured,S4,repository only,32-section leaky ring (networks trained on 8),rollout error,LF,LF-SepD,0-9,small medium,A/B > 1,leaky-32
-leaky-structured,S5,repository only,32-section classical leaky ring with an eight-section learned block,deviation from the classical solution over 1000 steps,LF,LF-SepD,0-9,small medium,A/B > 1,leaky-embedded
+leaky-structured,S5,repository only,32-section conventional leaky ring with an eight-section learned block,deviation from the conventional solution over 1000 steps,LF,LF-SepD,0-9,small medium,A/B > 1,leaky-embedded
 time-step,D1,Sect. 4.4,cubic circuit,"rollout error ratio, dt = 0.4 over dt = 0.05",Res,LF,0-9,small medium,(A/B at dt = 0.4) / (A/B at dt = 0.05) > 1,circuit-dt0.4 / circuit
 time-step,D2,Sect. 4.4,cubic circuit,"rollout error ratio, dt = 0.4 over dt = 0.05",SIE-M,LF,0-9,small medium,(A/B at dt = 0.4) / (A/B at dt = 0.05) > 1,circuit-dt0.4 / circuit
 time-step,D3,Sect. 4.4,eight-section line,"rollout error ratio, dt = 0.2 over dt = 0.05",Res,LF,0-9,small medium,(A/B at dt = 0.2) / (A/B at dt = 0.05) > 1,line-dt0.2 / line
@@ -77,7 +77,7 @@ vi-variables,X1,Table VI,"circuit with only C(V) nonlinear, V-I and charge-flux 
 vi-variables,X2,Table VI,"circuit with only L(I) nonlinear, V-I and charge-flux training",voltage error,LF (V-I),LF (q-phi),0-9,small medium,A/B > 1,voltage-ind
 vi-variables,X3,Table VI,"cubic circuit, V-I and charge-flux training",voltage error,LF (V-I),LF (q-phi),0-9,small medium,A/B > 1,voltage-cubic
 kcl-line,K1,Sect. 4.1,eight-section line,rollout error,LF,LF-KCL,0-9,small medium,A/B > 1,line
-kcl-line,K2,repository only,32-section classical ring with an eight-section learned block,energy change over 10^4 steps,LF,LF-KCL,0-9,small medium,A/B > 1,embedded
+kcl-line,K2,repository only,32-section conventional ring with an eight-section learned block,energy change over 10^4 steps,LF,LF-KCL,0-9,small medium,A/B > 1,embedded
 kcl-line,K3,Sect. 4.1,eight-section leaky ring,rollout error,LF,LF-KCLD,0-9,small medium,A/B > 1,leaky
 input-noise,N2-Res-circuit,Table VI,cubic circuit,"rollout error, 0.1% input noise",Res,LF,0-9,small medium,A/B > 1,circuit-noise0.1
 input-noise,N2-RK4-circuit,Table VI,cubic circuit,"rollout error, 0.1% input noise",RK4-net,LF,0-9,small medium,A/B > 1,circuit-noise0.1
@@ -106,16 +106,16 @@ varactor-drives,P3,repository only,"varactor line, matched, sinusoids and bit st
 varactor-drives,P4,repository only,"varactor line, matched, sinusoids and bit streams","load-voltage error ratio, sinusoids over bit streams",LF-U,LF,0-9,medium,(A/B sinusoids) / (A/B bit streams) > 1,sinusoids / bits
 varactor-drives,P5,repository only,"varactor line, matched, sinusoids and pulse trains","load-voltage error ratio, sinusoids over pulse trains",SIE,LF,0-9,medium,(A/B sinusoids) / (A/B pulse trains) > 1,sinusoids / trains
 varactor-drives,P6,repository only,"varactor line, matched, sinusoids and pulse trains","load-voltage error ratio, sinusoids over pulse trains",LF-U,LF,0-9,medium,(A/B sinusoids) / (A/B pulse trains) > 1,sinusoids / trains
-varactor-rest-corrected,Q1,Sect. 4.3,"varactor line, matched, bit streams","load-voltage error, uniform-state increments subtracted",SIE,LF,0-9,medium,A/B > 1,bits-rc
-varactor-rest-corrected,Q2,Sect. 4.3,"varactor line, matched, bit streams","load-voltage error, uniform-state increments subtracted",LF-U,LF,0-9,medium,A/B > 1,bits-rc
-varactor-rest-corrected,Q3,Sect. 4.3,"varactor line, matched, pulse trains","load-voltage error, uniform-state increments subtracted",SIE,LF,0-9,medium,A/B > 1,trains-rc
-varactor-rest-corrected,Q4,Sect. 4.3,"varactor line, matched, pulse trains","load-voltage error, uniform-state increments subtracted",LF-U,LF,0-9,medium,A/B > 1,trains-rc
-varactor-rest-corrected,Q5,Sect. 4.3,"varactor line, matched, pulses","load-voltage error, uniform-state increments subtracted",SIE,LF,0-9,medium,A/B > 1,pulses-rc
-varactor-rest-corrected,Q6,Sect. 4.3,"varactor line, matched, pulses","load-voltage error, uniform-state increments subtracted",LF-U,LF,0-9,medium,A/B > 1,pulses-rc
+varactor-rest-corrected,Q1,repository only,"varactor line, matched, bit streams","load-voltage error, uniform-state increments subtracted",SIE,LF,0-9,medium,A/B > 1,bits-rc
+varactor-rest-corrected,Q2,repository only,"varactor line, matched, bit streams","load-voltage error, uniform-state increments subtracted",LF-U,LF,0-9,medium,A/B > 1,bits-rc
+varactor-rest-corrected,Q3,repository only,"varactor line, matched, pulse trains","load-voltage error, uniform-state increments subtracted",SIE,LF,0-9,medium,A/B > 1,trains-rc
+varactor-rest-corrected,Q4,repository only,"varactor line, matched, pulse trains","load-voltage error, uniform-state increments subtracted",LF-U,LF,0-9,medium,A/B > 1,trains-rc
+varactor-rest-corrected,Q5,repository only,"varactor line, matched, pulses","load-voltage error, uniform-state increments subtracted",SIE,LF,0-9,medium,A/B > 1,pulses-rc
+varactor-rest-corrected,Q6,repository only,"varactor line, matched, pulses","load-voltage error, uniform-state increments subtracted",LF-U,LF,0-9,medium,A/B > 1,pulses-rc
 varactor-sinusoids-2,S1,Table V,"varactor line, matched, new sinusoids",load-voltage error,SIE,LF,10-19,medium,A/B > 1,sinusoids-2
 varactor-sinusoids-2,S2,Table V,"varactor line, matched, new sinusoids",load-voltage error,LF-U,LF,10-19,medium,A/B > 1,sinusoids-2
-varactor-energy-2,E1,Table V,"varactor line, matched pulses, reflected pulses, pulse trains","block-energy deviation, mean of log ratios over the three drives",LF-U,LF,10-19,medium,A/B > 1,pulses-energy-2 + reflected-energy-2 + trains-energy-2
-varactor-energy-2,E2,Table V,"varactor line, matched pulses, reflected pulses, pulse trains","block-energy deviation, mean of log ratios over the three drives",SIE,LF,10-19,medium,A/B > 1,pulses-energy-2 + reflected-energy-2 + trains-energy-2
+varactor-energy-2,E1,repository only,"varactor line, matched pulses, reflected pulses, pulse trains","block-energy deviation, mean of log ratios over the three drives",LF-U,LF,10-19,medium,A/B > 1,pulses-energy-2 + reflected-energy-2 + trains-energy-2
+varactor-energy-2,E2,repository only,"varactor line, matched pulses, reflected pulses, pulse trains","block-energy deviation, mean of log ratios over the three drives",SIE,LF,10-19,medium,A/B > 1,pulses-energy-2 + reflected-energy-2 + trains-energy-2
 varactor-components,W1,repository only,"varactor line, matched pulses and pulse trains","load-voltage error while a pulse is at the load, mean of log ratios over the two drives",LF-U,LF,10-19,medium,A/B > 1,pulses-active-2 + trains-active-2
 varactor-components,W2,repository only,"varactor line, matched pulses and pulse trains","load-voltage error while a pulse is at the load, mean of log ratios over the two drives",SIE,LF,10-19,medium,A/B > 1,pulses-active-2 + trains-active-2
 varactor-components,W3,repository only,"varactor line, matched pulses, pulse trains, reflected pulses","error of the energy delivered to the load, mean of log ratios over the three drives",LF-U,LF,10-19,medium,A/B > 1,pulses-delivered-2 + trains-delivered-2 + reflected-delivered-2
@@ -126,4 +126,4 @@ second-set,R1,Fig. 3; Sect. 4.1,cubic circuit,rollout error,SIE,LF,10-19,small m
 second-set,R2,Fig. 3; Sect. 4.1,cubic circuit,rollout error,LF-U,LF,10-19,small medium,A/B > 1,circuit
 second-set,R3,Fig. 3; Sect. 4.1,eight-section line,rollout error,SIE,LF,10-19,small medium,A/B > 1,line
 second-set,R4,Fig. 3; Sect. 4.1,eight-section line,rollout error,LF-U,LF,10-19,small medium,A/B > 1,line
-varactor-energy-3,F1,Table V,"varactor line, matched pulses, reflected pulses, pulse trains","block-energy deviation, mean of log ratios over the three drives",SIE,LF,20-49,medium,A/B > 1,pulses-energy-3 + reflected-energy-3 + trains-energy-3
+varactor-energy-3,F1,repository only,"varactor line, matched pulses, reflected pulses, pulse trains","block-energy deviation, mean of log ratios over the three drives",SIE,LF,20-49,medium,A/B > 1,pulses-energy-3 + reflected-energy-3 + trains-energy-3

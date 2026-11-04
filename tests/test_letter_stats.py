@@ -272,7 +272,7 @@ def test_family_sizes():
     sizes = {fam: len(rows) for fam, rows in PLAN.items()}
     assert len(sizes) == 28 and sum(sizes.values()) == 128
     assert min(sizes.values()) == 1 and max(sizes.values()) == 12
-    assert sum(r["letter"] == "repository only" for rows in PLAN.values() for r in rows) == 43
+    assert sum(r["letter"] == "repository only" for rows in PLAN.values() for r in rows) == 52
 
 
 def test_tables_point_to_planned_tests():
@@ -285,6 +285,17 @@ def test_tables_point_to_planned_tests():
             if t:
                 row = next(r for r in PLAN[t[0]] if r["test"] == t[1])
                 assert (row["model_a"], row["model_b"], row["source"]) == (a, "LF", source)
+
+
+def test_table5_cells_are_where_the_list_says():
+    letter = {(r["family"], r["test"]) for rows in PLAN.values() for r in rows if r["letter"] == "Table V"}
+    shown, only_here = set(), set()
+    for label, _, cells in LT.T4:
+        for col, t, _, _ in cells:
+            if t:
+                (shown if label not in LT.T4_REPOSITORY_ROWS and col in LT.T4_LETTER_COLUMNS else only_here).add(t)
+    assert shown == letter and len(shown) == 14
+    assert all(r["letter"] == "repository only" for rows in PLAN.values() for r in rows if (r["family"], r["test"]) in only_here)
 
 
 # ---- the saved per-run values
@@ -313,6 +324,12 @@ def test_saved_runs_cover_the_planned_tests():
                 models = {m for cell in g.values() for m in cell}
                 assert _models(r) <= models, (r["family"], r["test"], s)
     assert set(LD.read_classical()) == set(LT.T3_SOURCES)
+
+
+def test_saved_table5_matches_the_saved_output(capsys):
+    LT.print_table5(LT.table5(LT.SavedData()))
+    text = (LD.REPO / "results" / "letter_tables.md").read_text(encoding="utf-8")
+    assert capsys.readouterr().out.strip() in text
 
 
 def test_saved_table4_matches_the_saved_output(capsys):

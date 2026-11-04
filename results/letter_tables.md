@@ -109,16 +109,16 @@
 | varactor-drives / P4 | repository only | LF-U/LF | 1.29 [1.09, 1.49] | 20 | 10 | 0.021 (0.1) | 0.011 (0.054) |  |
 | varactor-drives / P5 | repository only | SIE/LF | 1.17 [0.97, 1.41] | 20 | 10 | 0.12 (0.16) | 0.07 (0.13) |  |
 | varactor-drives / P6 | repository only | LF-U/LF | 1.27 [1.09, 1.48] | 20 | 10 | 0.026 (0.1) | 0.012 (0.054) |  |
-| varactor-rest-corrected / Q1 | Sect. 4.3 | SIE/LF | 0.965 [0.815, 1.13] | 20 | 10 | 0.64 (1) | 0.65 (1) |  |
-| varactor-rest-corrected / Q2 | Sect. 4.3 | LF-U/LF | 1 [0.859, 1.15] | 20 | 10 | 0.49 (1) | 0.48 (1) |  |
-| varactor-rest-corrected / Q3 | Sect. 4.3 | SIE/LF | 1.02 [0.859, 1.2] | 20 | 10 | 0.43 (1) | 0.42 (1) |  |
-| varactor-rest-corrected / Q4 | Sect. 4.3 | LF-U/LF | 1.01 [0.846, 1.21] | 20 | 10 | 0.45 (1) | 0.45 (1) |  |
-| varactor-rest-corrected / Q5 | Sect. 4.3 | SIE/LF | 1.02 [0.867, 1.18] | 20 | 10 | 0.44 (1) | 0.42 (1) |  |
-| varactor-rest-corrected / Q6 | Sect. 4.3 | LF-U/LF | 1.03 [0.875, 1.2] | 20 | 10 | 0.4 (1) | 0.37 (1) |  |
+| varactor-rest-corrected / Q1 | repository only | SIE/LF | 0.965 [0.815, 1.13] | 20 | 10 | 0.64 (1) | 0.65 (1) |  |
+| varactor-rest-corrected / Q2 | repository only | LF-U/LF | 1 [0.859, 1.15] | 20 | 10 | 0.49 (1) | 0.48 (1) |  |
+| varactor-rest-corrected / Q3 | repository only | SIE/LF | 1.02 [0.859, 1.2] | 20 | 10 | 0.43 (1) | 0.42 (1) |  |
+| varactor-rest-corrected / Q4 | repository only | LF-U/LF | 1.01 [0.846, 1.21] | 20 | 10 | 0.45 (1) | 0.45 (1) |  |
+| varactor-rest-corrected / Q5 | repository only | SIE/LF | 1.02 [0.867, 1.18] | 20 | 10 | 0.44 (1) | 0.42 (1) |  |
+| varactor-rest-corrected / Q6 | repository only | LF-U/LF | 1.03 [0.875, 1.2] | 20 | 10 | 0.4 (1) | 0.37 (1) |  |
 | varactor-sinusoids-2 / S1 | Table V | SIE/LF | 1.15 [0.974, 1.39] | 20 | 10 | 0.074 (0.074) | 0.092 (0.092) |  |
 | varactor-sinusoids-2 / S2 | Table V | LF-U/LF | 1.48 [1.35, 1.67] | 20 | 10 | 1.0e-05 (2.0e-05) | 9.8e-04 (0.002) | † |
-| varactor-energy-2 / E1 | Table V | LF-U/LF | 1.6 [1.32, 2] | 20 | 10 | 2.7e-04 (5.4e-04) | 9.8e-04 (0.002) | † |
-| varactor-energy-2 / E2 | Table V | SIE/LF | 1.37 [1.09, 1.76] | 20 | 10 | 0.0044 (0.0044) | 0.016 (0.016) | † |
+| varactor-energy-2 / E1 | repository only | LF-U/LF | 1.6 [1.32, 2] | 20 | 10 | 2.7e-04 (5.4e-04) | 9.8e-04 (0.002) | † |
+| varactor-energy-2 / E2 | repository only | SIE/LF | 1.37 [1.09, 1.76] | 20 | 10 | 0.0044 (0.0044) | 0.016 (0.016) | † |
 | varactor-components / W1 | repository only | LF-U/LF | 1.34 [1.19, 1.55] | 20 | 10 | 1.1e-04 (6.6e-04) | 0.002 (0.012) | † |
 | varactor-components / W2 | repository only | SIE/LF | 1.1 [0.916, 1.37] | 20 | 10 | 0.16 (0.48) | 0.22 (0.67) |  |
 | varactor-components / W3 | repository only | LF-U/LF | 1.96 [1.44, 2.75] | 20 | 10 | 7.4e-04 (0.0037) | 0.002 (0.012) | † |
@@ -129,7 +129,7 @@
 | second-set / R2 | Fig. 3; Sect. 4.1 | LF-U/LF | 7.84 [6.53, 9.32] | 40 | 10 | 1.0e-05 (4.0e-05) | 9.8e-04 (0.0039) | † |
 | second-set / R3 | Fig. 3; Sect. 4.1 | SIE/LF | 2.83 [2.59, 3.08] | 40 | 10 | 1.0e-05 (4.0e-05) | 9.8e-04 (0.0039) | † |
 | second-set / R4 | Fig. 3; Sect. 4.1 | LF-U/LF | 3.9 [3.53, 4.3] | 40 | 10 | 1.0e-05 (4.0e-05) | 9.8e-04 (0.0039) | † |
-| varactor-energy-3 / F1 | Table V | SIE/LF | 1.44 [1.24, 1.66] | 60 | 30 | 2.0e-05 (2.0e-05) | 4.0e-05 (4.0e-05) | † |
+| varactor-energy-3 / F1 | repository only | SIE/LF | 1.44 [1.24, 1.66] | 60 | 30 | 2.0e-05 (2.0e-05) | 4.0e-05 (4.0e-05) | † |
 
 ## Table IV
 
@@ -147,18 +147,29 @@ Medians over the runs of each model (run counts in parentheses).
 
 ## Table V
 
-Ratios to LF. †: significant (both Holm-adjusted p < 0.05); *: planned test, not significant; plain: not tested.
-| Row | Load Res | Load RK4-net | Load SIE | Load LF-U | Energy SIE | Energy LF-U |
-|---|---|---|---|---|---|---|
-| Training ring | 2.26† | 2.22† | 1.49† | 1.59 | -- | -- |
-| Pulses, matched | 1.59† | 1.42* | 1.13* | 1.04 | 1.23 | 1.38 |
-| Pulses, reflected | 1.57† | 1.72† | 1.05* | 1* | 1.25 | 1.51 |
-| Pulse trains | 1.62 | 1.45 | 1.13 | 1.05 | 1.25 | 1.35 |
-| Bit streams | 1.48 | 1.33 | 1.09 | 1.04 | 1.12 | 1.27 |
-| Sinusoids | 1.99 | 2.09 | 1.32† | 1.33* | 1.38 | 1.37 |
-| Pulses, 2nd set | -- | -- | 1.1 | 1.22 | 1.37† | 1.6† |
-| Pulses, 3rd set | -- | -- | 1.14 | -- | 1.44† | -- |
-| Sinusoids, 2nd set | -- | -- | 1.15* | 1.48† | 1.23 | 1.43 |
+Ratios to LF in load voltage (charge on the training ring). †: both Holm-adjusted p < 0.05; *: planned test without †; in parentheses, the larger of the two Holm-adjusted p; plain: not tested; Load Res: Euler-net.
+| Row | Load Res | Load RK4-net | Load SIE | Load LF-U |
+|---|---|---|---|---|
+| Training ring | 2.26† (0.0059) | 2.22† (0.016) | 1.49† (0.015) | 1.59 |
+| Pulses, matched | 1.59† (0.029) | 1.42* (0.057) | 1.13* (0.23) | 1.04 |
+| Pulses, reflected | 1.57† (0.049) | 1.72† (0.012) | 1.05* (1) | 1* (1) |
+| Pulse trains | 1.62 | 1.45 | 1.13 | 1.05 |
+| Bit streams | 1.48 | 1.33 | 1.09 | 1.04 |
+| Sinusoids | 1.99 | 2.09 | 1.32† (0.028) | 1.33* (0.16) |
+| Sinusoids, 2nd set | -- | -- | 1.15* (0.092) | 1.48† (0.002) |
+
+### SIE and LF-U in load voltage and block energy, every drive (the block energy and the rows 'Pulses, 2nd set' and 'Pulses, 3rd set' are given only in this repository)
+
+| Row | Load SIE | Load LF-U | Energy SIE | Energy LF-U |
+|---|---|---|---|---|
+| Pulses, matched | 1.13* (0.23) | 1.04 | 1.23 | 1.38 |
+| Pulses, reflected | 1.05* (1) | 1* (1) | 1.25 | 1.51 |
+| Pulse trains | 1.13 | 1.05 | 1.25 | 1.35 |
+| Bit streams | 1.09 | 1.04 | 1.12 | 1.27 |
+| Sinusoids | 1.32† (0.028) | 1.33* (0.16) | 1.38 | 1.37 |
+| Pulses, 2nd set | 1.1 | 1.22 | 1.37† (0.016) | 1.6† (0.002) |
+| Pulses, 3rd set | 1.14 | -- | 1.44† (4.0e-05) | -- |
+| Sinusoids, 2nd set | 1.15* (0.092) | 1.48† (0.002) | 1.23 | 1.43 |
 
 ## Fig. 3
 
