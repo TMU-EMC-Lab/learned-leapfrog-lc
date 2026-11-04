@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the article in preferred-citation."
+title: "Code for \"Leapfrog schedule as an inductive bias for learned updates of nonlinear LC circuits\""
+type: software
+version: "0.1.0-draft"
+authors:
+  - family-names: Sakai
+    given-names: Tomohiro
+    affiliation: "Graduate School of Systems Design, Tokyo Metropolitan University"
+  - family-names: Oshio
+    given-names: Reon
+    affiliation: "Graduate School of Systems Design, Tokyo Metropolitan University"
+  - family-names: Suzuki
+    given-names: Yukihisa
+    affiliation: "Graduate School of Systems Design, Tokyo Metropolitan University"
+repository-code: "https://github.com/TMU-EMC-Lab/learned-leapfrog-lc"
+keywords:
+  - leapfrog method
+  - neural network
+  - inductive bias
+  - nonlinear transmission line
+  - charge-flux variables
+# license: to be decided before public release
+preferred-citation:
+  type: article
+  title: "Leapfrog schedule as an inductive bias for learned updates of nonlinear LC circuits"
+  authors:
+    - family-names: Sakai
+      given-names: Tomohiro
+      affiliation: "Graduate School of Systems Design, Tokyo Metropolitan University"
+    - family-names: Oshio
+      given-names: Reon
+      affiliation: "Graduate School of Systems Design, Tokyo Metropolitan University"
+    - family-names: Suzuki
+      given-names: Yukihisa
+      affiliation: "Graduate School of Systems Design, Tokyo Metropolitan University"
+  journal: "IEICE Electronics Express"
+  status: submitted
+  year: 2026

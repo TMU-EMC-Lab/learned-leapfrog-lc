@@ -1,0 +1,29 @@
+# Energy change of free-running learned networks: scripts/freerun_energy_20261023.py
+# Networks: sizes small and medium x learning rates 1e-2 and 3e-2 x seeds 0-9 per model; 512 test (interpolation) initial conditions
+# Measure: RMS over integer times 0..N of r = (H - H0)/H0, with staggered models' flux averaged over adjacent half steps;
+#   a network's value is the median over initial conditions whose RMS is finite and at most 100 (the others count as diverged),
+#   or 1e3 if all diverged
+# X/LF: geometric mean of ratios of runs paired by seed, size, and learning rate (a stratum is left out when both medians are 0.3 or more)
+
+## circuit (nlqf3_v1_dtd2)
+
+| Model | Runs | Energy change, 1000 steps | 10^4 steps | Diverged of 512, 1000 steps | 10^4 steps | X/LF, 1000 steps | 10^4 steps |
+|---|---|---|---|---|---|---|---|
+| LF | 40 | 0.00206 | 0.018 | 0 | 0 | — | — |
+| SIE | 40 | 0.00472 | 0.0455 | 0 | 0 | 2.246 (40 pairs) | 2.71 (40 pairs) |
+| SIE-M | 40 | 0.00816 | 0.0815 | 0 | 0 | 3.89 (40 pairs) | 4.752 (40 pairs) |
+| LF-U | 40 | 0.0137 | 0.132 | 0 | 0 | 6.619 (40 pairs) | 7.737 (40 pairs) |
+| Res | 40 | 0.00881 | 0.0841 | 0 | 0 | 4.491 (40 pairs) | 5.308 (40 pairs) |
+| RK4 | 40 | 0.00847 | 0.0774 | 0 | 0 | 3.802 (40 pairs) | 4.347 (40 pairs) |
+
+## line (nltl8_v1_dtd2)
+
+| Model | Runs | Energy change, 1000 steps | 10^4 steps | Diverged of 512, 1000 steps | 10^4 steps | X/LF, 1000 steps | 10^4 steps |
+|---|---|---|---|---|---|---|---|
+| LF | 40 | 0.0057 | 0.0415 | 0 | 1 | — | — |
+| SIE | 40 | 0.0432 | 0.362 | 0 | 82.5 | 5.707 (40 pairs) | 8.926 (40 pairs) |
+| SIE-M | 40 | 0.0472 | 0.324 | 0 | 85.5 | 7.897 (40 pairs) | 8.921 (40 pairs) |
+| LF-U | 40 | 0.057 | 0.396 | 0 | 48 | 8.365 (40 pairs) | 8.607 (40 pairs) |
+| Res | 40 | 0.082 | 0.389 | 0 | 48.5 | 9.039 (40 pairs) | 9.727 (40 pairs) |
+| RK4 | 40 | 0.0222 | 0.18 | 0 | 38.5 | 3.304 (40 pairs) | 3.921 (40 pairs) |
+

@@ -1,0 +1,29 @@
+# All-classical varactor line (dt = 0.05) against RK4 with substep 0.005 (double precision, CPU): scripts/nltlv_fine_rk_ref_20261029.py
+# Load voltage: RMS deviation / incident amplitude, mean and max over the 64 signals (%)
+# Block energy: RMS deviation of the interior 32 sections' sum[U(q)+K(phi)] / its maximum in the RK4 solution, mean and max over the non-empty signals (%)
+# Main: source voltage in double precision. In brackets: source voltage in single precision, as in the evaluation
+
+- open (Pulses, matched (also the matched pulses of the 2nd and 3rd sets), 2000 steps): load voltage mean 0.0263%, max 0.0799% [0.0263%, 0.0799%]; block energy mean 0.00321%, max 0.0079% [0.00321%, 0.0079%]
+- reflect (Pulses, reflected (also the reflected pulses of the 2nd and 3rd sets), 7874 steps): load voltage mean 0.33%, max 0.355% [0.33%, 0.355%]; block energy mean 0.29%, max 0.31% [0.29%, 0.31%]
+- train (Pulse trains, 4000 steps): load voltage mean 0.038%, max 0.108% [0.038%, 0.108%]; block energy mean 0.00419%, max 0.011% [0.0042%, 0.011%]
+- prbs (Bit streams, 4000 steps): load voltage mean 0.0219%, max 0.0622% [0.0219%, 0.0622%]; block energy mean 0.00209%, max 0.00369% [0.00209%, 0.00369%] (2 empty signals left out, 62 used)
+- cw (Sinusoids, 4000 steps): load voltage mean 0.189%, max 0.403% [0.189%, 0.403%]; block energy mean 0.0263%, max 0.0735% [0.0263%, 0.0734%]
+- train_new (Pulse trains of the 2nd and 3rd pulse sets (--sig-seed 20261031), 4000 steps): load voltage mean 0.031%, max 0.0965% [0.031%, 0.0965%]; block energy mean 0.00366%, max 0.00917% [0.00366%, 0.00917%]
+- cwrep (Sinusoids, 2nd set (--sig-seed 20261029), 4000 steps): load voltage mean 0.175%, max 0.377% [0.175%, 0.377%]; block energy mean 0.0226%, max 0.0612% [0.0227%, 0.0612%]
+
+Rows of Table V and signal groups: Pulses, matched = open; Pulses, reflected = reflect; Pulse trains = train; Bit streams = prbs; Sinusoids = cw; Pulses, 2nd set = open + reflect + train_new; Pulses, 3rd set = open + reflect + train_new; Sinusoids, 2nd set = cwrep
+
+Mean load-voltage deviation of the classical line / LF's median load-voltage error in each row using the group (results/letter_runs.csv, model LF)
+- open/pulses: 0.0263% / 0.417% (20 runs) = 0.063
+- open/pulses-2: 0.0263% / 0.453% (20 runs) = 0.058
+- open/pulses-3: 0.0263% / 0.591% (60 runs) = 0.044
+- reflect/reflected: 0.33% / 2.36% (20 runs) = 0.139
+- reflect/reflected-2: 0.33% / 2.87% (20 runs) = 0.115
+- reflect/reflected-3: 0.33% / 2.93% (60 runs) = 0.112
+- train/trains: 0.038% / 0.386% (20 runs) = 0.098
+- prbs/bits: 0.0219% / 0.827% (20 runs) = 0.027
+- cw/sinusoids: 0.189% / 1.41% (20 runs) = 0.134
+- train_new/trains-2: 0.031% / 0.449% (20 runs) = 0.069
+- train_new/trains-3: 0.031% / 0.579% (60 runs) = 0.054
+- cwrep/sinusoids-2: 0.175% / 1.7% (20 runs) = 0.103
+- largest: 0.139

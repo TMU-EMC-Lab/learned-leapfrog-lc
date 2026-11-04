@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv*/
+.DS_Store
+# run folders written by training
+/picture/
+# working files of the evaluation scripts
+/work/
+# reference solutions cached by the evaluation (can be remade)
+datasets/*/ref_cache/

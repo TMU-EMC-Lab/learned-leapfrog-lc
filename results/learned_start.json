@@ -1,0 +1,64 @@
+{
+ "circuit": {
+  "dataset": "nlqf3_v1_dtd2",
+  "n": {
+   "LF": 40,
+   "LF_learned": 40,
+   "Res": 40,
+   "RK4": 40
+  },
+  "LF_learned/LF_ref": {
+   "ratio": 1.3306739168660455,
+   "pairs": 40
+  },
+  "Res/LF_ref": {
+   "ratio": 4.426644196674458,
+   "pairs": 40
+  },
+  "Res/LF_learned": {
+   "ratio": 3.326618295111643,
+   "pairs": 40
+  },
+  "RK4/LF_ref": {
+   "ratio": 3.7452597059787935,
+   "pairs": 40
+  },
+  "RK4/LF_learned": {
+   "ratio": 2.8145585920850484,
+   "pairs": 40
+  },
+  "median_LF_ref": 0.012928273321266488,
+  "median_LF_learned": 0.016891921189852117
+ },
+ "line": {
+  "dataset": "nltl8_v1_dtd2",
+  "n": {
+   "LF": 40,
+   "LF_learned": 40,
+   "Res": 40,
+   "RK4": 40
+  },
+  "LF_learned/LF_ref": {
+   "ratio": 1.0245675485568924,
+   "pairs": 40
+  },
+  "Res/LF_ref": {
+   "ratio": 3.810532536178122,
+   "pairs": 40
+  },
+  "Res/LF_learned": {
+   "ratio": 3.719161846913142,
+   "pairs": 40
+  },
+  "RK4/LF_ref": {
+   "ratio": 2.1396867465517606,
+   "pairs": 40
+  },
+  "RK4/LF_learned": {
+   "ratio": 2.088380360636561,
+   "pairs": 40
+  },
+  "median_LF_ref": 0.062210861121149125,
+  "median_LF_learned": 0.0635630599741048
+ }
+}
