@@ -20,7 +20,7 @@ keywords:
   - inductive bias
   - nonlinear transmission line
   - charge-flux variables
-# license: to be decided before public release
+license: MIT
 preferred-citation:
   type: article
   title: "Leapfrog schedule as an inductive bias for learned updates of nonlinear LC circuits"

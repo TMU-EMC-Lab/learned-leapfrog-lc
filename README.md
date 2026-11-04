@@ -6,7 +6,7 @@ This repository contains the code used in the experiments of the letter
 
 The authors are with the Graduate School of Systems Design, Tokyo Metropolitan University.
 
-**Status: draft (version 0.1.0-draft).** The license and the release that the letter cites are still to be decided.
+**Status: draft (version 0.1.0-draft).** The release that the letter cites is v1.0.0, to be tagged when the letter is submitted.
 
 ## Contents
 
@@ -290,4 +290,4 @@ Please cite the letter. `CITATION.cff` has the details.
 
 ## License
 
-To be decided before public release. Until a license is added, no license is granted.
+MIT License. See `LICENSE`.
