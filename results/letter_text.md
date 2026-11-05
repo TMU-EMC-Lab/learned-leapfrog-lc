@@ -37,7 +37,7 @@ Computed by `python scripts/letter_text.py` from results/letter_runs.csv, result
 ## Sect. 4.2 (and README.md)
 
 - Pairs in which LF lost fewer initial conditions to divergence: Res 37 of 40, RK4-net 35 of 40, SIE 32 of 40, LF-U 40 of 40, SIE-M 40 of 40
-- Total charge and flux changed by t = 500 (medians, % of the initial norms): LF 23.52 and 20.77; Res 76.4 and 63.3; RK4-net 44.16 and 44.04; LF-KCL 1.272 and 0.9261; SIE-M 25.59 and 69.68; LF-Sep 17.34 and 14.11
+- Total charge and flux changed by t = 500 (medians, % of the initial norms): LF 23.52 and 20.77; Res 76.4 and 63.3; RK4-net 44.16 and 44.04; LF-KCL 1.272 and 0.9261; SIE-M 25.59 and 69.68; LF-Sep 17.34 and 14.11; SIE 55.46 and 55.34; LF-U 50.43 and 21.02; Res2 41.98 and 58.72
 - Energy change with divergence counted as the worst (median over initial conditions), X/LF: Res 18.5 [14.2, 24.1] (40 pairs); RK4-net 4.29 [3.43, 5.46] (40 pairs); SIE 14.4 [9.66, 22.9] (40 pairs); SIE-M 33.3 [21.7, 53.9] (40 pairs); LF-U 58.7 [27.9, 158] (40 pairs)
 
 ## Sect. 4.3 (and README.md)
@@ -76,6 +76,7 @@ Computed by `python scripts/letter_text.py` from results/letter_runs.csv, result
 - dt = 0.4 in the circuit: 0.639 of the linearized limit; dt = 0.2 in the line: 0.449
 - Circuit, dt = 0.05 -> 0.4: Res/LF 4.43 -> 1.44 (fine / coarse 3.07); LF-U/LF 6.32 -> 1.65 (fine / coarse 3.82); SIE-M/LF 3.76 -> 1.38 (fine / coarse 2.72); SIE/LF 2.31 -> 3.74 (fine / coarse 0.616); medians at 0.4: LF 0.066, Res 0.109, RK4-net 0.067, LF-U 0.121, SIE 0.287, SIE-M 0.102
 - Line, dt = 0.05 -> 0.2: Res/LF 3.81 -> 2.53 (fine / coarse 1.51); LF-U/LF 3.52 -> 2.05 (fine / coarse 1.72); SIE-M/LF 3.44 -> 1.8 (fine / coarse 1.92); SIE/LF 3.01 -> 4.76 (fine / coarse 0.632); medians at 0.2: LF 0.182, Res 0.358, RK4-net 0.172, LF-U 0.35, SIE 0.498, SIE-M 0.28
+- Line, dt = 0.4, medians: LF 0.506, Res 0.426, RK4-net 0.805, LF-U 0.495, SIE 0.61, SIE-M 0.518, Res2 0.504, LF-Sep 0.673
 - 32 sections, dt = 0.2: RK4-net/LF 0.72 [0.586, 0.893] (40 pairs)
 - RK4-net with about 700 parameters / LF with about 2400 (matched by seed and learning rate): circuit-dt0.4 1.13 [0.933, 1.35] (20 pairs); line-dt0.2 1.37 [1.23, 1.5] (20 pairs); line-32-dt0.2 1.18 [0.992, 1.42] (20 pairs); circuit 3.53 [2.82, 4.36] (20 pairs); line 3.28 [2.87, 3.69] (20 pairs); line-32 1.94 [1.74, 2.18] (20 pairs)
 - circuit-noise1 medians: LF 0.4314, LF-KCL 0.02027, RK4-net 0.382, Res 0.3954, SIE 0.4131, SIE-M 0.4501
@@ -96,7 +97,7 @@ Computed by `python scripts/letter_text.py` from results/letter_runs.csv, result
 
 ## Sources of results/text_runs.csv
 
-Further models of circuit-noise1, line-noise1, ring, pulses, reflected, trains, bits, sinusoids, pulses-energy, reflected-energy, trains-energy, bits-energy, sinusoids-energy, pulses-rc, trains-rc, bits-rc, voltage-cap, voltage-ind, voltage-cubic (scripts/letter_data.py), and:
+Further models of line-dt0.4, circuit-noise1, line-noise1, ring, pulses, reflected, trains, bits, sinusoids, pulses-energy, reflected-energy, trains-energy, bits-energy, sinusoids-energy, pulses-rc, trains-rc, bits-rc, voltage-cap, voltage-ind, voltage-cubic (scripts/letter_data.py), and:
 
 - line-32-dt0.2: free run, nltl8_v1_dt0p2 networks on nltl32_v1_dt0p2: test error up to t = 50
 - circuit-extrap: free run, nlqf3_v1_dtd2: extrapolation error up to t = 50

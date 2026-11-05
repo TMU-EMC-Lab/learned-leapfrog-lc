@@ -19,8 +19,8 @@ except where a line says otherwise.
 export reads the trained runs (--runs-root) and the outputs folder (--outputs) of scripts/letter_data.py, which here
 also holds
   embedded_charge/*.json   hybrid_line_20261021.py --block 8 --steps 10000 --models M --seeds 0 4 (and 5 9), M one of
-                           LF, Res, RK4, SIE-M, and LF-Sep: the total charge and flux of the embedded ring (those of
-                           LF-KCL are in embedded/)
+                           LF, Res, RK4, SIE-M, LF-Sep, SIE, LF-U, and Res2: the total charge and flux of the embedded
+                           ring (those of LF-KCL are in embedded/)
   drives/<drive>_rc_M.json nltlv_diag_20261023f_restfix.py --rest-correct with the options of each drive in README.md:
                            reflect_rc, cw_rc, open_new_rc, reflect_new_rc, train_new_rc, cw_new_rc, open_third_rc,
                            reflect_third_rc, and train_third_rc, besides open_rc, train_rc, and prbs_rc
@@ -29,8 +29,8 @@ also holds
   pulses_reference.json    nltlv_open_20261022.py --reference
   classical_div.txt        classical_div_20261022.py nltl32_v1_dt0p2 nltl32_v1_dt0p1 nltl8_v1_dt0p2
   classical_centered.json  classical_centered_20261022.py (it writes $LLLC_WORK_DIR/crossvar/classical_centered_20261022.json)
-  pulse_physics/<set>_M.json  per-network dc offsets and pulse arrival times of the varactor line (written by a
-                           diagnostic script that is not in this repository; sources dc-offset and arrival-drift)
+  pulse_physics/<set>_M.json  nltlv_pulse_physics_20261023.py --set <set> --models M: per-network dc offsets and pulse
+                           arrival times of the varactor line (sources dc-offset and arrival-drift)
 and the evaluations on the validation split (ic_generalization_eval.py --splits val --out-subdir eval_val) of the
 cubic-circuit runs with learning rates 3e-3, 1e-2, 3e-2, and 1e-1. export also runs the all-classical reflecting line
 of nltlv_reflect_20261022.py once, without networks, to time the block crossings.
@@ -90,7 +90,7 @@ TEXT_DRIVES = {
     "reflected-charge-all": ("reflect", "q_all"),
 }
 # Sources of letter_data.py whose further models are written: source -> seeds
-MORE_MODELS = {s: FIRST for s in ("circuit-noise1", "line-noise1", "ring", "pulses", "reflected", "trains", "bits",
+MORE_MODELS = {s: FIRST for s in ("line-dt0.4", "circuit-noise1", "line-noise1", "ring", "pulses", "reflected", "trains", "bits",
                                   "sinusoids", "pulses-energy", "reflected-energy", "trains-energy", "bits-energy",
                                   "sinusoids-energy", "pulses-rc", "trains-rc", "bits-rc", "voltage-cap",
                                   "voltage-ind", "voltage-cubic")}
@@ -210,7 +210,7 @@ def pulse_rows(directory):
                 if not r["off_div_m"]:
                     yield "dc-offset", key, m, seed, r["dc_m"] / (320.0 * (r["dq0"] + r["dphi0"]))
                 ok = ~np.asarray(r["div_r"], bool)
-                sh = np.asarray([[np.nan if v is None else v for v in row] for row in r["shift"]], float)[ok][:, 4:9]
+                sh = np.asarray([[np.nan if v is None else v for v in row] for row in r["shift"]], float)[ok]
                 slope = abs(float(np.mean([np.polyfit([1, 3, 5, 7, 9], row, 1)[0] for row in sh]))) * 1.27e-3
                 if math.isfinite(slope):
                     yield "arrival-drift", key, m, seed, slope
@@ -572,7 +572,7 @@ def sect42(R: Runs, p) -> None:
     q, f = R.get("embedded-charge"), R.get("embedded-flux")
     p("- Total charge and flux changed by t = 500 (medians, % of the initial norms): "
       + "; ".join(f"{m} {100 * median(q, m):.4g} and {100 * median(f, m):.4g}" for m in ("LF", "Res", "RK4-net", "LF-KCL",
-                                                                                      "SIE-M", "LF-Sep") if median(q, m) is not None))
+                                                                                      "SIE-M", "LF-Sep", "SIE", "LF-U", "Res2") if median(q, m) is not None))
     w = R.get("embedded-worst")
     p("- Energy change with divergence counted as the worst (median over initial conditions), X/LF: "
       + "; ".join(f"{m} {fr(est(w, m, 'LF', f'text/worst/{m}'))}" for m in ("Res", "RK4-net", "SIE", "SIE-M", "LF-U")))
@@ -686,6 +686,7 @@ def sect44(R: Runs, V: dict, p) -> None:
                          f"{1 / rr['ratio']:.3g})")
         meds = ", ".join(f"{m} {median(at[panel, coarse], m):.3g}" for m in ("LF", "Res", "RK4-net", "LF-U", "SIE", "SIE-M"))
         p(f"- {panel.capitalize()}, dt = 0.05 -> {coarse}: " + "; ".join(cells) + f"; medians at {coarse}: {meds}")
+    p("- Line, dt = 0.4, medians: " + ", ".join(f"{m} {median(at['line', 0.4], m):.3g}" for m in ("LF", "Res", "RK4-net", "LF-U", "SIE", "SIE-M", "Res2", "LF-Sep")))
     l32 = R.get("line-32-dt0.2")
     p(f"- 32 sections, dt = 0.2: RK4-net/LF {fr(est(l32, 'RK4-net', 'LF', 'text/l32dt/rk4'))}")
     cells = []
