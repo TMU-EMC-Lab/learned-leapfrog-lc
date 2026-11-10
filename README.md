@@ -256,6 +256,8 @@ The letter is limited to six pages, so the following details of its setup and te
 - **Training.** Besides the settings in Table II of the letter, every network was trained with a cosine learning-rate schedule (to 1% of the initial rate), gradient clipping (maximum norm 1), and 64 trajectories per batch, as in the command above.
 - **Courant number.** In the line, Δt = 0.05 is a Courant number of 0.05 for small signals and 0.11 at the highest energy.
 - **Energy of staggered states.** In the standalone rollouts and the embedded ring, the energy of a staggered state uses the flux averaged to integer times, that is, the mean of the half-step fluxes before and after.
+- **Energy change of the embedded ring.** For each number of steps T in Fig. 4, the energy change is |⟨H⟩ − H(0)|/H(0) with ⟨H⟩ the mean over the last tenth of the T steps; the letter's "last 10^3 steps" is the case T = 10^4 (Table IV).
+- **Error scale.** The rollout error divides by the reference amplitude of q, at least 0.05: the amplitude given by the energy in the single circuit, and the largest |q| over all sections of the reference solution up to t = 10 in rings and lines.
 - **Reference data.** The reference solutions are computed in double precision and stored in single precision (see the precision table above).
 - **p-values of Fig. 3.** Circuit 0.0049; rings with N = 8 and N = 32, 0.0078; lossy ring 0.0059, but 0.013 for RK4-net; embedded ring 0.0029; second set 0.0039; rollout loss 0.012; 0.1% noise 0.012 (circuit) and 0.0059 (line). With ten seeds, an uncorrected seed-mean p cannot fall below 2^-10.
 - **Drives of the varactor line (Sect. 4.3).** Each drive has 64 signals.

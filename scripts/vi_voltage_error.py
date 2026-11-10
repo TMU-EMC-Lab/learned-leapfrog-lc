@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Voltage error of circuit networks trained in voltage-current (V-I) and in charge-flux (q-phi) variables (Table VI).
+"""Voltage error of circuit networks trained in voltage-current (V-I) and in charge-flux (q-phi) variables (Sect. 4.4).
 
   python scripts/vi_voltage_error.py --out vi_voltage.json [--pairs circuit1 circuit3 cubic circuit2] [--seeds 0 9]
 

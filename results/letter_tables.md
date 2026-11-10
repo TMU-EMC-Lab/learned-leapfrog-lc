@@ -17,7 +17,7 @@
 | non-lc-midpoint / H2-B10 | repository only | SIE/SIE-M | 2 [1.88, 2.12] | 40 | 20 | 1.0e-05 (7.0e-05) | 9.5e-07 (6.7e-06) | † |
 | non-lc-midpoint / H2-B20 | repository only | SIE/SIE-M | 2.03 [1.88, 2.18] | 40 | 20 | 1.0e-05 (7.0e-05) | 9.5e-07 (6.7e-06) | † |
 | non-lc-duffing-beta / H4 | repository only | (LF-U/LF)/(Res2/SIE) | 1.05 [0.991, 1.11] < 1.14 [1.07, 1.23] < 4.03 [3.4, 4.66] < 5.96 [4.4, 8.2] | 20 + 20 + 20 + 20 | 10 | ordering held (no p) | -- | |
-| vi-third-circuit / H5a | Table VI | LF-U/LF | 1.03 [0.94, 1.13] | 20 | 10 | 0.23 (0.46) | 0.25 (0.51) |  |
+| vi-third-circuit / H5a | Sect. 4.4 | LF-U/LF | 1.03 [0.94, 1.13] | 20 | 10 | 0.23 (0.46) | 0.25 (0.51) |  |
 | vi-third-circuit / H5b | repository only | SIE/SIE-M | 0.969 [0.934, 1.01] | 20 | 10 | 0.92 (0.92) | 0.92 (0.92) |  |
 | tan-circuit / H6a | repository only | (LF-U/LF)/(Res2/SIE) | 2.19 [1.65, 2.97] | 40 | 10 | 2.0e-05 (4.0e-05) | 9.8e-04 (0.002) | † |
 | tan-circuit / H6b | repository only | SIE/SIE-M | 0.264 [0.212, 0.332] | 40 | 10 | 1 (1) | 1 (1) |  |
@@ -36,14 +36,14 @@
 | line / L6 | Sect. 4.1 | LF/LF-Sep | 1.44 [1.31, 1.58] | 40 | 10 | 1.0e-05 (8.0e-05) | 9.8e-04 (0.0078) | † |
 | line / L7 | Fig. 3; Sect. 4.1 | Res/LF | 1.96 [1.7, 2.24] | 40 | 10 | 1.0e-05 (8.0e-05) | 9.8e-04 (0.0078) | † |
 | line / L8 | repository only | LF/LF-Sep | 1.16 [1.03, 1.3] | 40 | 10 | 0.0016 (0.0025) | 0.021 (0.021) | † |
-| centered-update / K1 | Table VI | LF/LF-C | 1.04 [0.954, 1.15] | 40 | 10 | 0.2 (1) | 0.21 (1) |  |
-| centered-update / K2 | Table VI | LF/LF-C | 0.982 [0.896, 1.08] | 40 | 10 | 0.62 (1) | 0.64 (1) |  |
-| centered-update / K3 | Table VI | LF/LF-C | 1.03 [0.971, 1.08] | 40 | 10 | 0.24 (1) | 0.21 (1) |  |
-| centered-update / K4 | Table VI | LF/LF-C | 1.12 [0.937, 1.33] | 40 | 10 | 0.077 (0.62) | 0.13 (1) |  |
-| centered-update / K5 | Table VI | Res2/LF-C | 1 [0.937, 1.09] | 40 | 10 | 0.46 (1) | 0.46 (1) |  |
-| centered-update / K6 | Table VI | Res2/LF-C | 1.03 [0.978, 1.1] | 40 | 10 | 0.23 (1) | 0.19 (1) |  |
-| centered-update / K7 | Table VI | Res2/LF-C | 1.06 [0.966, 1.17] | 40 | 10 | 0.083 (0.62) | 0.13 (1) |  |
-| centered-update / K8 | Table VI | Res2/LF-C | 0.984 [0.769, 1.22] | 40 | 10 | 0.57 (1) | 0.55 (1) |  |
+| centered-update / K1 | Sect. 4.4 | LF/LF-C | 1.04 [0.954, 1.15] | 40 | 10 | 0.2 (1) | 0.21 (1) |  |
+| centered-update / K2 | Sect. 4.4 | LF/LF-C | 0.982 [0.896, 1.08] | 40 | 10 | 0.62 (1) | 0.64 (1) |  |
+| centered-update / K3 | Sect. 4.4 | LF/LF-C | 1.03 [0.971, 1.08] | 40 | 10 | 0.24 (1) | 0.21 (1) |  |
+| centered-update / K4 | Sect. 4.4 | LF/LF-C | 1.12 [0.937, 1.33] | 40 | 10 | 0.077 (0.62) | 0.13 (1) |  |
+| centered-update / K5 | Sect. 4.4 | Res2/LF-C | 1 [0.937, 1.09] | 40 | 10 | 0.46 (1) | 0.46 (1) |  |
+| centered-update / K6 | Sect. 4.4 | Res2/LF-C | 1.03 [0.978, 1.1] | 40 | 10 | 0.23 (1) | 0.19 (1) |  |
+| centered-update / K7 | Sect. 4.4 | Res2/LF-C | 1.06 [0.966, 1.17] | 40 | 10 | 0.083 (0.62) | 0.13 (1) |  |
+| centered-update / K8 | Sect. 4.4 | Res2/LF-C | 0.984 [0.769, 1.22] | 40 | 10 | 0.57 (1) | 0.55 (1) |  |
 | embedded / E1 | Fig. 3; Sect. 4.2 | Res/LF | 13.4 [10.9, 16.4] | 40 | 10 | 1.0e-05 (3.0e-05) | 9.8e-04 (0.0029) | † |
 | embedded / E2 | Fig. 3; Sect. 4.2 | RK4-net/LF | 3.87 [3.28, 4.51] | 40 | 10 | 1.0e-05 (3.0e-05) | 9.8e-04 (0.0029) | † |
 | embedded / E3 | Fig. 3; Sect. 4.2 | SIE-M/LF | 12.4 [10.5, 15.1] | 40 | 10 | 1.0e-05 (3.0e-05) | 9.8e-04 (0.0029) | † |
@@ -76,9 +76,9 @@
 | training / T1-N-line | Table VI | Res/LF | no stratum left | 0 | 0 | 1 (1) | 1 (1) | |
 | training / T2-N-line | Table VI | RK4-net/LF | 0.972 [0.88, 1.08] | 10 | 10 | 0.7 (1) | 0.7 (1) |  |
 | training / T3-N-line | Table VI | SIE-M/LF | no stratum left | 0 | 0 | 1 (1) | 1 (1) | |
-| vi-variables / X1 | Table VI | LF (V-I)/LF (q-phi) | 1.13 [0.944, 1.33] | 40 | 10 | 0.078 (0.078) | 0.11 (0.11) |  |
-| vi-variables / X2 | Table VI | LF (V-I)/LF (q-phi) | 1.57 [1.38, 1.81] | 40 | 10 | 1.0e-05 (3.0e-05) | 9.8e-04 (0.0029) | † |
-| vi-variables / X3 | Table VI | LF (V-I)/LF (q-phi) | 3.16 [2.79, 3.57] | 40 | 10 | 1.0e-05 (3.0e-05) | 9.8e-04 (0.0029) | † |
+| vi-variables / X1 | Sect. 4.4 | LF (V-I)/LF (q-phi) | 1.13 [0.944, 1.33] | 40 | 10 | 0.078 (0.078) | 0.11 (0.11) |  |
+| vi-variables / X2 | Sect. 4.4 | LF (V-I)/LF (q-phi) | 1.57 [1.38, 1.81] | 40 | 10 | 1.0e-05 (3.0e-05) | 9.8e-04 (0.0029) | † |
+| vi-variables / X3 | Sect. 4.4 | LF (V-I)/LF (q-phi) | 3.16 [2.79, 3.57] | 40 | 10 | 1.0e-05 (3.0e-05) | 9.8e-04 (0.0029) | † |
 | kcl-line / K1 | Sect. 4.1 | LF/LF-KCL | 6.01 [5.65, 6.4] | 40 | 10 | 1.0e-05 (3.0e-05) | 9.8e-04 (0.0029) | † |
 | kcl-line / K2 | repository only | LF/LF-KCL | 17.2 [15, 19.8] | 40 | 10 | 1.0e-05 (3.0e-05) | 9.8e-04 (0.0029) | † |
 | kcl-line / K3 | Sect. 4.1 | LF/LF-KCLD | 6.86 [5.42, 8.71] | 40 | 10 | 1.0e-05 (3.0e-05) | 9.8e-04 (0.0029) | † |
