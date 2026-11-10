@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the article in preferred-citation."
-title: "Code for \"Leapfrog schedule as an inductive bias for learned updates of nonlinear LC circuits\""
+title: "Code for \"Leapfrog scheduling as an inductive bias for learning updates in nonlinear LC circuits\""
 type: software
 version: "0.1.0-draft"
 authors:
@@ -23,7 +23,7 @@ keywords:
 license: MIT
 preferred-citation:
   type: article
-  title: "Leapfrog schedule as an inductive bias for learned updates of nonlinear LC circuits"
+  title: "Leapfrog scheduling as an inductive bias for learning updates in nonlinear LC circuits"
   authors:
     - family-names: Sakai
       given-names: Tomohiro

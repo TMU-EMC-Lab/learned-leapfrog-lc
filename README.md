@@ -1,8 +1,8 @@
-# Code for "Leapfrog schedule as an inductive bias for learned updates of nonlinear LC circuits"
+# Code for "Leapfrog scheduling as an inductive bias for learning updates in nonlinear LC circuits"
 
 This repository contains the code used in the experiments of the letter
 
-> T. Sakai, R. Oshio, and Y. Suzuki, "Leapfrog schedule as an inductive bias for learned updates of nonlinear LC circuits," submitted to *IEICE Electronics Express*, 2026.
+> T. Sakai, R. Oshio, and Y. Suzuki, "Leapfrog scheduling as an inductive bias for learning updates in nonlinear LC circuits," submitted to *IEICE Electronics Express*, 2026.
 
 The authors are with the Graduate School of Systems Design, Tokyo Metropolitan University.
 
@@ -86,7 +86,7 @@ Four further models appear in the letter, two of them without a name of their ow
 | Res2 | Euler-split: Euler-net (Res) split into two networks, each fed the state at the step's start (Table I) | `Res2_MLP_state` (as LF) | `Res2_Loc_state` (as LF) |
 | LF-Sep | each of LF's networks fed only the other variable (Table I) | `LF_Sep_MLP` (LF-KCL above) | `LF_Sep_Loc` (15 → 692, 31 → 2420) |
 | LF-KCLD | LF-KCL with a learned shunt term, in the lossy ring (Sect. 4.1) | — | `LF_KCLD_Loc` (13 → 666, 27 → 2514) |
-| LF-C | LF centering each update's own variable, in the V–I circuits (Table VI) | `LF_Cen_MLP` (as LF) | — |
+| LF-C | LF centering each update's own variable, in the V–I circuits (Sect. 4.4) | `LF_Cen_MLP` (as LF) | — |
 | LF-SepD | not in the letter: LF-Sep with a learned loss term, in the lossy ring | — | `LF_SepD_Loc` (12 → 723, 25 → 2478) |
 | RK4-KCL | not in the letter: LF-KCL's structure with separately trained scalar laws, advanced by RK4 | — | `RK4_KCL_Loc` (as LF-KCL) |
 
@@ -108,14 +108,14 @@ The networks of the letter used the learning rates 10^-2 and 3 × 10^-2 (`--lr 0
 
 Further settings of the letter:
 
-- Every comparison uses both learning rates, 10^-2 and 3 × 10^-2, for every model. The rates 3 × 10^-3 and 10^-1 (`--lr 0.003`, `--lr 0.1`) enter only the one check in Table II that chooses one of the four rates per model by validation.
+- Every comparison uses both learning rates, 10^-2 and 3 × 10^-2, for every model. The rates 3 × 10^-3 and 10^-1 (`--lr 0.003`, `--lr 0.1`) enter only one check, given only in this repository: choosing one of the four rates per model and size by validation rollout error widened LF's circuit margins over Euler-net and RK4-net.
 - The evaluated weights are those of the last epoch; `--best-val`, which keeps the weights of the best validation epoch, was not used.
 - The staggered models (family `lf` in `harmonic_models.py`: LF, LF-U, LF-KCL, LF-Sep, LF-KCLD, and LF-C) are trained on the exact half-step values of the reference solution's second variable, the flux or, in V–I variables, the current (`--teacher numerical`), not on values interpolated from full steps; their test runs start from the reference value at t = −Δt/2.
 - The free-run errors up to t = 50 use 1000 points for the staggered models (t = 0 to 49.95 at Δt = 0.05) and 1001 for the integer-time models (t = 0 to 50), because a staggered rollout has its flux at integer times only up to the step before the last (`system_eval.evaluate`). Leaving out the final time lowers the integer-time models' errors by 0.06–0.42% at Δt = 0.05. At Δt = 0.4 it lowers them by a median of 1.4% in the cubic circuit and 0.7% in the eight-section line, and single runs change by −2.9% to +2.7%. These values, over 1600 runs of Euler-net (Res), RK4-net, Euler-split (Res2), SIE, and SIE-M, are in `results/eval_points_runs.csv`, written by `scripts/eval_points_check.py`. The errors reported in the letter keep the two counts.
 - `BHIC_LOCAL_INPUT_SCALE`, an input scale of the line networks read in `harmonic_models.py`, keeps its default of 1 for all networks of the letter.
 - Input noise (`--input-noise`) is Gaussian, with a standard deviation of the given fraction of each variable's RMS over the training data. It is added only to the state at the start of each training step, (q_n, φ_{n−1/2}) or (q_n, φ_n); the later flux that the charge network of the staggered models, SIE, and SIE-M receives (φ_{n+1/2} or φ_{n+1}) and the targets stay exact.
 - The varactor ring `nltlv8_v1_dtd2` starts from dc-shifted waves around the bias: all charges get one dc shift drawn uniformly in [−0.5, 2.6] and all fluxes one in [−1, 3.2], in the normalized units of `systems.VaractorLine`, and a smooth random wave of the same form as in the cubic ring is added, with a per-section RMS drawn uniformly in (0.05, 1] ((1, 1.44] for extrapolation), separately for charge and flux.
-- `scripts/letter_data.py` finds the runs by their run ids: `abs_mse_lr<1e2 or 3e2>_bs64_gc1_num_ltctau_cos_s<seed>` followed by `_gpu` for the default training, `_ro10_gpu` for the 10-step rollout loss, `_nz1_gpu` and `_nz01_gpu` for 1% and 0.1% input noise, and `_cpu` for networks trained on CPUs: those of two tests of Table VI in the V–I circuit with only L(I) nonlinear (LF-U/LF and SIE/SIE-M, about 700 parameters) and those of the systems that are not LC circuits.
+- `scripts/letter_data.py` finds the runs by their run ids: `abs_mse_lr<1e2 or 3e2>_bs64_gc1_num_ltctau_cos_s<seed>` followed by `_gpu` for the default training, `_ro10_gpu` for the 10-step rollout loss, `_nz1_gpu` and `_nz01_gpu` for 1% and 0.1% input noise, and `_cpu` for networks trained on CPUs: those of two V–I tests (Sect. 4.4) in the circuit with only L(I) nonlinear (LF-U/LF and SIE/SIE-M, about 700 parameters) and those of the systems that are not LC circuits.
 
 The letter states that the training and test trajectories were computed in double precision and that the networks, alone or inside rings and lines, ran in single precision. The precision of each computation is as follows.
 
@@ -125,9 +125,9 @@ The letter states that the training and test trajectories were computed in doubl
 | Networks, including LF-KCL, in free runs | single | `system_eval.py` |
 | Rings and lines with learned blocks (Sects. 4.2 and 4.3) | single | `scripts/hybrid_line_20261021.py`, `scripts/nltlv_*.py` |
 | Fully conventional reference rings and lines computed alongside them (Sect. 4.3 compares with these) | double | the same scripts |
-| Conventional row of Table IV, Sect. 4.1 columns; conventional curves of Fig. 5; conventional extrapolation in Table VI | single (the networks' evaluation path) | `scripts/line_classical_ref.py`, `scripts/dt_classical_ref_20261021.py` |
-| Conventional row of Table IV, Sect. 4.2 columns (fully conventional ring) | single (the embedding path without a network) | `scripts/hybrid_line_20261021.py` |
-| Conventional V–I update in Table VI | double | `scripts/vi_voltage_error.py` |
+| Conventional row of Table IV, rollout-error columns; conventional curves of Fig. 5; conventional extrapolation in Table VI | single (the networks' evaluation path) | `scripts/line_classical_ref.py`, `scripts/dt_classical_ref_20261021.py` |
+| Conventional row of Table IV, embedded columns (fully conventional ring) | single (the embedding path without a network) | `scripts/hybrid_line_20261021.py` |
+| Conventional V–I update (values under "Details that the letter leaves to this repository") | double | `scripts/vi_voltage_error.py` |
 
 A trained network can be evaluated again, on another split or on another dataset with the same system, for example an eight-section line network on 32 sections:
 
@@ -154,7 +154,7 @@ The scripts in `scripts/` run trained networks in further settings of the letter
 | `line_classical_ref.py`, `dt_classical_ref_20261021.py` | the conventional leapfrog scheme with the true element laws, evaluated as the networks are, at Δt = 0.05 and at the other time steps |
 | `classical_div_20261022.py` | counts the initial conditions for which the conventional scheme diverges in the ring |
 | `classical_centered_20261022.py` | conventional updates in voltage–current and in charge–flux variables, with and without centering each update's own variable |
-| `vi_voltage_error.py` | voltage error of circuit networks trained in V–I and in charge–flux variables (Table VI) |
+| `vi_voltage_error.py` | voltage error of circuit networks trained in V–I and in charge–flux variables (Sect. 4.4) |
 | `freerun_energy_20261023.py` | energy change and divergence of the free-running networks over 1000 and 10^4 steps (Sect. 4.1) |
 | `energy_projection_20261020.py` | one-step errors of the two networks of LF and of the ablations, and the energy change that they imply (Sect. 4.1) |
 | `learned_start_20261028.py`, `kcl_leaky_20261028.py` | LF started half a learned step back (Table VI); LF-KCL and LF-KCLD against LF in the lossy ring (Sect. 4.1) |
@@ -218,7 +218,7 @@ The commands below fill the outputs folder (`$O`), whose subfolders must exist f
 | `leaky_embedded/all.json` | `hybrid_line_20261021.py --train-ds nltlg8_v1_dtd2 --test-ds nltlg32_v1_dtd2 --loss-g 0.03 --block 8 --steps 1000 --out $O/leaky_embedded/all.json` | two tests given only in this repository |
 | `classical_steps.json` | `dt_classical_ref_20261021.py nlqf3_v1_dtd2 nlqf3_v1_dt0p1 nlqf3_v1_dt0p2 nlqf3_v1_dt0p4 nltl8_v1_dtd2 nltl8_v1_dt0p1 nltl8_v1_dt0p2 nltl8_v1_dt0p4 --out $O/classical_steps.json` | Table IV, Fig. 5 |
 | `classical_line.json` | `line_classical_ref.py --out $O/classical_line.json` | Table IV |
-| `vi_voltage.json` | `vi_voltage_error.py --out $O/vi_voltage.json` | Table VI |
+| `vi_voltage.json` | `vi_voltage_error.py --out $O/vi_voltage.json` | Sect. 4.4 |
 | `pulses.json` | `nltlv_open_20261022.py --out $O/pulses.json` | Table V |
 | `reflected.json` | `nltlv_reflect_20261022.py --out $O/reflected.json` | Table V |
 | `drives/<drive>_M.json` | `nltlv_diag_20261022.py --mode <mode> --models M --out $O/drives/<drive>_M.json`, as in the next table | Table V |
@@ -248,6 +248,27 @@ The matched and reflected pulses of the 2nd and 3rd sets are the signals of the 
 The line is an idealized 50-Ω nonlinear transmission line of varactors, C(V) = C_j0/√(1 + V/V_bi) at reverse voltage V (C_j0 = 1 pF, built-in potential V_bi = 0.7 V, reverse bias 2 V, so that the bias-point capacitance is 0.509 pF), and linear 1.27-nH inductors; the normalized units are 1 V, 0.509 pC, 20 mA, and t0 = 25.4 ps (`systems.VaractorLine`). Under the matched pulses of Table V, the fully conventional line shortens the median 10–90% rise time from 122 to 72 ps. The block energy Σ_k [U(q_k) + K(φ_k)] of the 32 learned sections, given only in this repository, is measured from the bias with q_{n+1} and φ_{n+1/2}; for the full-step models, φ_{n+1/2} is the mean of φ_n and φ_{n+1}. The block-energy deviation is not a drift, since energy crosses the interfaces. Under bit streams, it excludes the two signals whose bits are all zero, where the conventional block energy is 0.
 
 Table V measures every error against the fully conventional line. Against fine Runge–Kutta solutions (substep Δt/10), the fully conventional line's RMS load-voltage deviation is at most 0.33% of the amplitude and a seventh of LF's median error under each drive (`nltlv_fine_rk_ref_20261029.py --runs-csv results/letter_runs.csv --out results/fine_rk_reference.json`, which uses no trained network; outputs `results/fine_rk_reference.txt` and `.json`).
+
+### Details that the letter leaves to this repository
+
+The letter is limited to six pages, so the following details of its setup and tests are given here.
+
+- **Training.** Besides the settings in Table II of the letter, every network was trained with a cosine learning-rate schedule (to 1% of the initial rate), gradient clipping (maximum norm 1), and 64 trajectories per batch, as in the command above.
+- **Courant number.** In the line, Δt = 0.05 is a Courant number of 0.05 for small signals and 0.11 at the highest energy.
+- **Energy of staggered states.** In the standalone rollouts and the embedded ring, the energy of a staggered state uses the flux averaged to integer times, that is, the mean of the half-step fluxes before and after.
+- **Reference data.** The reference solutions are computed in double precision and stored in single precision (see the precision table above).
+- **p-values of Fig. 3.** Circuit 0.0049; rings with N = 8 and N = 32, 0.0078; lossy ring 0.0059, but 0.013 for RK4-net; embedded ring 0.0029; second set 0.0039; rollout loss 0.012; 0.1% noise 0.012 (circuit) and 0.0059 (line). With ten seeds, an uncorrected seed-mean p cannot fall below 2^-10.
+- **Drives of the varactor line (Sect. 4.3).** Each drive has 64 signals.
+  - Pulses, matched: 50-Ω terminations, matched at small signals and low frequencies; pulses of 1–3 V with raised-cosine edges of 100–300 ps, propagated for 2.5 ns.
+  - Pulses, reflected: terminations of 5 and 500 Ω; pulses of 0.5–1.0 V, which cross the block about ten times in 10 ns.
+  - Pulse trains: the matched line driven for 5.1 ns by 1–3-V pulses repeated every 1.5–3 ns.
+  - Bit streams: random non-return-to-zero bit streams of 0 or 0.5–1.5 V at 1–2.5 Gb/s, for 5.1 ns.
+  - Sinusoids: 0.5–1.5 V at 1.2–4.7 GHz, for 5.1 ns.
+- **V–I variables (Sect. 4.4).** The four circuits are the cubic circuit and circuits with incremental C(V) = 1/(1 + V^2), with incremental L(I) = 1/(1 + I^2) (and C = 2), or with both; the last is a section of Hirota's self-dual network. Energies are 0.00125–0.5 with C(V), and also 0.0025–1 with both. LF-C centers each update's own variable by fixed-point iteration, and a conventional V–I update was also run.
+  - LF's voltage error with V–I training over that with charge–flux training: 3.2† (cubic), 1.6† (only L(I) nonlinear; each p = 0.0029), 1.13 (p = 0.11; only C(V) nonlinear), 1.86 (both).
+  - In V–I variables with only L(I) nonlinear, LF-U/LF = 1.03 (p = 0.51).
+  - Centering each update's own variable gave no significant gain over LF or Euler-split in eight tests (each p = 1).
+  - The conventional V–I update in the cubic circuit has a relative voltage error of 0.63, or 0.011 with fixed-point iteration.
 
 ### Numbers in the text
 
@@ -285,7 +306,7 @@ Please cite the letter. `CITATION.cff` has the details.
 ```
 @article{sakai2026leapfrog,
   author  = {Sakai, Tomohiro and Oshio, Reon and Suzuki, Yukihisa},
-  title   = {Leapfrog schedule as an inductive bias for learned updates of nonlinear {LC} circuits},
+  title   = {Leapfrog scheduling as an inductive bias for learning updates in nonlinear {LC} circuits},
   journal = {IEICE Electronics Express},
   year    = {2026},
   note    = {submitted}
