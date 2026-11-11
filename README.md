@@ -6,7 +6,7 @@ This repository contains the code used in the experiments of the letter
 
 The authors are with the Graduate School of Systems Design, Tokyo Metropolitan University.
 
-**Status: draft (version 0.1.0-draft).** The release that the letter cites is v1.0.0, to be tagged when the letter is submitted.
+**Version 1.0.0.** This is the release that the letter cites. Releases are archived on Zenodo, each with its own DOI.
 
 ## Contents
 
@@ -303,7 +303,7 @@ Apart from the six load-voltage tests that the last item extends, the comparison
 
 ## Citation
 
-Please cite the letter. `CITATION.cff` has the details.
+Please cite the letter. `CITATION.cff` has the details. To refer to the code itself, cite the Zenodo record of the release you used.
 
 ```
 @article{sakai2026leapfrog,

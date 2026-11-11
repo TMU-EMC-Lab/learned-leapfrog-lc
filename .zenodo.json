@@ -1,0 +1,30 @@
+{
+  "title": "Code for \"Leapfrog scheduling as an inductive bias for learning updates in nonlinear LC circuits\"",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "description": "Code, dataset manifests, per-run results, and the list of planned tests for the letter \"Leapfrog scheduling as an inductive bias for learning updates in nonlinear LC circuits\" by T. Sakai, R. Oshio, and Y. Suzuki (submitted to IEICE Electronics Express, 2026). See README.md for contents and usage.",
+  "creators": [
+    {
+      "name": "Sakai, Tomohiro",
+      "affiliation": "Graduate School of Systems Design, Tokyo Metropolitan University"
+    },
+    {
+      "name": "Oshio, Reon",
+      "affiliation": "Graduate School of Systems Design, Tokyo Metropolitan University"
+    },
+    {
+      "name": "Suzuki, Yukihisa",
+      "affiliation": "Graduate School of Systems Design, Tokyo Metropolitan University"
+    }
+  ],
+  "access_right": "open",
+  "license": "mit",
+  "keywords": [
+    "leapfrog method",
+    "neural network",
+    "inductive bias",
+    "nonlinear transmission line",
+    "charge-flux variables"
+  ],
+  "language": "eng"
+}
