@@ -3,6 +3,8 @@ message: "If you use this code, please cite the article in preferred-citation."
 title: "Code for \"Leapfrog scheduling as an inductive bias for learning updates in nonlinear LC circuits\""
 type: software
 version: "1.0.0"
+doi: 10.5281/zenodo.24131453
+date-released: "2026-11-11"
 authors:
   - family-names: Sakai
     given-names: Tomohiro

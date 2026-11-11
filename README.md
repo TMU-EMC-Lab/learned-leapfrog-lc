@@ -6,7 +6,7 @@ This repository contains the code used in the experiments of the letter
 
 The authors are with the Graduate School of Systems Design, Tokyo Metropolitan University.
 
-**Version 1.0.0.** This is the release that the letter cites. Releases are archived on Zenodo, each with its own DOI.
+**Version 1.0.0** is the release that the letter cites. It is archived on Zenodo with the DOI [10.5281/zenodo.24131453](https://doi.org/10.5281/zenodo.24131453); [10.5281/zenodo.24131452](https://doi.org/10.5281/zenodo.24131452) always resolves to the latest release.
 
 ## Contents
 
